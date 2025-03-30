@@ -1,0 +1,103 @@
+<odoo>
+    <!-- Form View for Sample Submission -->
+    <record id="view_sample_submission_form" model="ir.ui.view">
+        <field name="name">sample.submission.form</field>
+        <field name="model">sample.submission</field>
+        <field name="arch" type="xml">
+            <form string="Sample Submission">
+                <header>
+                    <button string="Generate Invoice" type="object" name="action_generate_invoice"
+                            class="oe_highlight" invisible="invoice_generated"/>
+                    <button name="action_print_report" string="Print Report" type="object"
+                            class="oe_highlight"/>
+                    <field name="stage" widget="statusbar" statusbar_visible="pending,doing,completed"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1 class="d-flex">
+                            <field name="sequence" readonly="1"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="customer_id"/>
+                            <field name="submission_date"/>
+                            <field name="invoice_id" readonly="1"/>
+                            <field name="invoice_generated" readonly="1"/>
+                            <field name="create_uid" invisible="0"/>
+                        </group>
+                        <group>
+                            <field name="description"/>
+                            <field name="price"/>
+                            <field name="discount"/>
+                            <field name="vat"/>
+                            <field name="total_price" readonly="1"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Material Requirements">
+                            <field name="wizard_ids" nolabel="1">
+                                <tree editable="false" create="false" >
+                                    <field name="sl_no"/>
+                                    <field name="material_id"/>
+                                    <field name="quantity"/>
+                                    <field name="remarks"/>
+                                </tree>
+                            </field>
+                            <button name="open_material_wizard" string="Add Materials" type="object"
+                                    class="btn-primary"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+    <record id="view_sample_submission_summary_tree" model="ir.ui.view">
+        <field name="name">sample.submission.tree</field>
+        <field name="model">sample.submission</field>
+        <field name="arch" type="xml">
+            <tree string="Sample Submission Summary" create="true">
+                <field name="sequence"/>
+                <field name="submission_date"/>
+                <field name="total_price"/>
+                <field name="price"/>
+                <field name="invoice_status" widget="badge"/>
+                <field name="collected_payment"/>
+                <field name="balance"/>
+                <field name="total_product_quantity"/>
+                <field name="sum_of_cost"/>
+                <field name="profit"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Action for Sample Submission -->
+    <record id="action_sample_summary_tree" model="ir.actions.act_window">
+        <field name="name">Sample Submissions</field>
+        <field name="res_model">sample.submission</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_sample_submission_summary_tree"/>
+    </record>
+
+
+    <!-- Menu Item -->
+    <menuitem id="menu_sample_submission_root" name="Sample Submissions"
+              web_icon="sample_submission,static/description/icon.png" action="action_sample_summary_tree"
+              sequence="10"/>
+
+
+    <menuitem id="menu_sample_submission" name="Submissions" parent="menu_sample_submission_root"
+              action="action_sample_summary_tree" sequence="10"/>
+
+    <menuitem id="menu_sample_submission_report"
+              name="Excel/PDF Reports"
+              parent="menu_sample_submission_root"
+              action="action_sample_submission_report_wizard"
+              sequence="11"
+    />
+
+
+</odoo>
