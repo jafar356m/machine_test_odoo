@@ -1,0 +1,33 @@
+<odoo>
+
+    <record id="sample_submission_excel_report" model="ir.actions.report">
+        <field name="name">ample Submission Excel Report</field>
+        <field name="model">sample.submission</field>
+        <field name="report_type">xlsx</field>
+        <field name="report_name">sample_submission.sample_submission_excel_report</field>
+        <field name="report_file">sample_submission.sample_submission_excel_report</field>
+        <field name="binding_type">report</field>
+    </record>
+
+    <record id="report_sample_submission" model="ir.actions.report">
+        <field name="name">PDF Report</field>
+        <field name="model">sample.submission</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">sample_submission.sample_submission_pdf_report</field>
+        <field name="report_file">sample_submission.sample_submission_pdf_report</field>
+        <field name="binding_model_id" ref="model_sample_submission"/>
+        <field name="binding_type">report</field>
+    </record>
+
+
+    <record id="report_sample_submission_date" model="ir.actions.report">
+        <field name="name">PDF Report</field>
+        <field name="model">sample.submission.report.wizard</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">sample_submission.sample_submission_pdf_report_pdf</field>
+        <field name="report_file">sample_submission.sample_submission_pdf_report_pdf</field>
+        <field name="binding_type">report</field>
+    </record>
+
+
+</odoo>

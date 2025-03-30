@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="sample_submission_pdf_report">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+                <div class="page">
+                    <t t-set="rec" t-value="docs[0] if docs else doc or o or object"/>
+                    <div style="position: absolute; top: 50%; left: 0; right: 0; bottom: 0; opacity: 0.1; z-index: 1;">
+                        <t t-if="rec.customer_id.watermark_image">
+                            <img t-att-src="image_data_uri(rec.customer_id.watermark_image)"
+                                 style="position:absolute; height: 1000px; width: 1000px; opacity: 1;"/>
+                        </t>
+                        <t t-else="">
+                            <img src="/sample_submission/static/description/watermark.png"
+                                 style="position:absolute; height: 1000px; width: 1000px; opacity: 1;"/>
+                        </t>
+                    </div>
+
+                    <div style="position: relative; z-index: 2;">
+                        <h2 class="text-center mt-4">Sample Submission Report</h2>
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Customer</th>
+                                    <th>Name</th>
+                                    <th>Price</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <t t-if="rec.submission_date">
+                                            <span t-field="rec.submission_date" t-options="{'widget': 'date'}"/>
+                                        </t>
+                                    </td>
+                                    <td>
+                                        <t t-if="rec.customer_id">
+                                            <span t-field="rec.customer_id" t-options="{'widget': 'many2one'}"/>
+                                        </t>
+                                    </td>
+                                    <td>
+                                        <t t-if="rec.name">
+                                            <span t-field="rec.name"/>
+                                        </t>
+                                    </td>
+                                    <td>
+                                        <t t-if="rec.price">
+                                            <span t-field="rec.price"/>
+                                        </t>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>

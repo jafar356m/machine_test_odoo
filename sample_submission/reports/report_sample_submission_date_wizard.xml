@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="sample_submission_pdf_report_pdf">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+                <div class="page">
+                    <!-- Report Title -->
+                    <div style="position: relative; z-index: 2;">
+                        <h2 class="text-center mt-4">Sample Submission Report</h2>
+
+                        <br/>
+                        <!-- Report Table -->
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Sequence</th>
+                                    <th>Submission Date</th>
+                                    <th>Total Price</th>
+                                    <th>Price</th>
+                                    <th>Invoice Status</th>
+                                    <th>Collected Payment</th>
+                                    <th>Balance</th>
+                                    <th>Total Product Quantity</th>
+                                    <th>Sum of Cost</th>
+                                    <th>Profit</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="docs" t-as="doc">
+                                    <tr>
+                                        <td>
+                                            <span t-field="doc.sequence"/>
+                                        </td>
+                                        <td>
+                                            <span t-field="doc.submission_date"/>
+                                        </td>
+                                        <td>
+                                            <span t-field="doc.total_price"/>
+                                        </td>
+                                        <td>
+                                            <span t-field="doc.price"/>
+                                        </td>
+                                        <td>
+                                            <span t-field="doc.invoice_status"/>
+                                        </td>
+                                        <td>
+                                            <span t-field="doc.collected_payment"/>
+                                        </td>
+                                        <td>
+                                            <span t-field="doc.balance"/>
+                                        </td>
+                                        <td>
+                                            <span t-field="doc.total_product_quantity"/>
+                                        </td>
+                                        <td>
+                                            <span t-field="doc.sum_of_cost"/>
+                                        </td>
+                                        <td>
+                                            <span t-field="doc.profit"/>
+                                        </td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>
+
+
