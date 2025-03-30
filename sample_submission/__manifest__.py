@@ -19,9 +19,10 @@
         'reports/report_sample_submission_date_wizard.xml',
         'wizard/sample_submission_report_wizard.xml',
         'wizard/sample_material_wizard_views.xml',
-        'wizard/generate_invoice_wizard_views.xml',
+        'wizard/generate_invoice_wizard_views.xml'
         'views/res_partner.xml',
         'views/sample_submission_views.xml',
+        
 
     ],
     'assets': {
