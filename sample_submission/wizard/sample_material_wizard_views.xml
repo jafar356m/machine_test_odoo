@@ -1,0 +1,29 @@
+<odoo>
+    <record id="view_sample_material_wizard_form" model="ir.ui.view">
+        <field name="name">sample.material.wizard.form</field>
+        <field name="model">sample.material.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Manage Material Requirements">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="sample_id" readonly="1"/>
+                            <field name="sl_no"/>
+                            <field name="material_id"/>
+                        </group>
+                        <group>
+                            <field name="quantity"/>
+                            <field name="remarks"/>
+                        </group>
+                    </group>
+                </sheet>
+                <footer>
+                    <button name="apply_material" type="object" string="Apply" class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+
+</odoo>
